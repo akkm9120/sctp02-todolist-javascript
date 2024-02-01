@@ -1,24 +1,3 @@
-const todos = [
-    {
-        "id": 123,
-        "name": "Walk the dog",
-        "urgency": 2
-    },
-    {
-        "id": 234,
-        "name": "Wash the car",
-        "urgency": 1
-    },
-    {
-        "id": 456,
-        "name": "Clean the Toilet",
-        "urgency": 3
-    },
-
-
-];
-
-const prompt = require('prompt-sync')();
 
 function displayTodos(todos){
     console.log("To Do List") 
@@ -27,7 +6,8 @@ function displayTodos(todos){
         console.log(`
             TaskID : ${task.id}
             Name: ${task.name}
-            Urgecy: ${task.urgency}`)
+            Urgecy: ${task.urgency}
+            `)
     }
 }
 ////////////////////////////////////////////////////////////////////
@@ -99,10 +79,65 @@ function deleteTodos(todos,delid){
 }
 ///////////////////////////////////////////////////////////////////////////////
 
+function displayMenu() {
+    console.log(`        Menu `)
+    console.log("1. Show all tasks");
+    console.log("2. Add a new task");
+    console.log("3. Update a task");
+    console.log("4. Delete a task");
+    console.log("5. Quit");
+}
 
-displayUpdateTodos(todos);
-displayTodos(todos);
+// displayUpdateTodos(todos);
+// displayTodos(todos);
 // displayCreateTodo(todos);
 // displayTodos(todos);
 // displayDeleteTodos(todos);
 // displayTodos(todos);
+
+
+function main() {
+    const todos = [
+        {
+            "id": 123,
+            "name": "Walk the dog",
+            "urgency": 2
+        },
+        {
+            "id": 234,
+            "name": "Wash the car",
+            "urgency": 1
+        },
+        {
+            "id": 456,
+            "name": "Clean the Toilet",
+            "urgency": 3
+        },
+    
+    
+    ];
+    
+    const prompt = require('prompt-sync')();
+    
+    while (true) {
+        displayMenu();
+        let choice = parseInt(prompt("Enter an option: "));
+        if (choice == 1) {
+            displayTodos(todos)
+        }
+        if (choice == 2) {
+            displayCreateTodo(todos);
+        }
+        if (choice == 3) {
+            displayUpdateTodos(todos);
+        }
+        if (choice == 4) {
+            displayDeleteTodos(todos);
+        }
+        if (choice == 5) {
+            break;
+        }
+    }
+}
+
+main();
